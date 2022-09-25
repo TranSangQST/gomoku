@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/transangst.github.io/gomoku/static/css/main.1614174f.css",
-    "main.js": "/transangst.github.io/gomoku/static/js/main.cfec0c93.js",
-    "static/js/787.ad6089d3.chunk.js": "/transangst.github.io/gomoku/static/js/787.ad6089d3.chunk.js",
-    "index.html": "/transangst.github.io/gomoku/index.html",
-    "main.1614174f.css.map": "/transangst.github.io/gomoku/static/css/main.1614174f.css.map",
-    "main.cfec0c93.js.map": "/transangst.github.io/gomoku/static/js/main.cfec0c93.js.map",
-    "787.ad6089d3.chunk.js.map": "/transangst.github.io/gomoku/static/js/787.ad6089d3.chunk.js.map"
+    "main.css": "/gomoku/static/css/main.1614174f.css",
+    "main.js": "/gomoku/static/js/main.fbbfc0b4.js",
+    "static/js/787.ad6089d3.chunk.js": "/gomoku/static/js/787.ad6089d3.chunk.js",
+    "index.html": "/gomoku/index.html",
+    "main.1614174f.css.map": "/gomoku/static/css/main.1614174f.css.map",
+    "main.fbbfc0b4.js.map": "/gomoku/static/js/main.fbbfc0b4.js.map",
+    "787.ad6089d3.chunk.js.map": "/gomoku/static/js/787.ad6089d3.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.1614174f.css",
-    "static/js/main.cfec0c93.js"
+    "static/js/main.fbbfc0b4.js"
   ]
 }
