@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/TranSangQST.github.io/gomoku/static/css/main.1614174f.css",
+    "main.js": "/TranSangQST.github.io/gomoku/static/js/main.be011cd6.js",
+    "static/js/787.ad6089d3.chunk.js": "/TranSangQST.github.io/gomoku/static/js/787.ad6089d3.chunk.js",
+    "index.html": "/TranSangQST.github.io/gomoku/index.html",
+    "main.1614174f.css.map": "/TranSangQST.github.io/gomoku/static/css/main.1614174f.css.map",
+    "main.be011cd6.js.map": "/TranSangQST.github.io/gomoku/static/js/main.be011cd6.js.map",
+    "787.ad6089d3.chunk.js.map": "/TranSangQST.github.io/gomoku/static/js/787.ad6089d3.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1614174f.css",
+    "static/js/main.be011cd6.js"
+  ]
+}
