@@ -1,14 +1,13 @@
-import React from "react";
-import { useState } from "react";
 
 import "./Square.css"
 
 
 
-function Square(props) {
+function Square({value, onClick}) {
+    // console.log("onclick in sq: ", onClick);
     return (
-        <button className="square" onClick={props.onClick}>
-        {props.value}
+        <button className="square" onClick={onClick}>
+            {value}
         </button>
     );
 }

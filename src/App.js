@@ -6,7 +6,7 @@ import Square from "./components/Square";
 function App() {
 	return (
 		<div className="App">
-			<Game></Game>
+			<Game size={5}></Game>
 		</div>
 	);
 }
