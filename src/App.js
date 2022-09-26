@@ -1,13 +1,14 @@
 import Game from "./components/Game";
-import Board from "./components/Board";
-import Square from "./components/Square";
+import GlobalStyles from "./components/GlobalStyles";
 
 
 function App() {
 	return (
-		<div className="App">
-			<Game size={3} winSize={3}></Game>
-		</div>
+		<GlobalStyles>
+			<div className="App">
+				<Game size={10} winSize={5}></Game>
+			</div>
+		</GlobalStyles>
 	);
 }
 
