@@ -341,11 +341,12 @@ function Game({size, winSize}){
 		const current = history[stepNumber];
 		const checkWinner = calculateWinner(current.squares, current.curPos, winSize);
 	
-	
 		const moves = history.map((step, move) => {
-			const {row, col} = conver1DTo2DPosition(current.curPos, size);
+			const {row, col} = conver1DTo2DPosition(step.curPos, size);
+			let postMessage = `${col+1}, ${row+1}`;
+		
 			const desc = move ?
-				`Go to move #${move} (col, row) = (${col+1}, ${row+1})` :
+				`Go to move #${move} (col, row) = (${postMessage})` :
 				'Go to game start';
 			return (
 				<li key={move}>

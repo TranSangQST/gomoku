@@ -30,13 +30,13 @@ https://transangqst.github.io/gomoku/
 
 ### Demo:
 
-1. Format (col, row) trong history list.
+#### 1. Format (col, row) trong history list.
    <img src="./report/format.png">
-2. In đậm bước đang chọn
+#### 2. In đậm bước đang chọn
    <img src="./report/move.png">
-3. Thắng: Đổi luật thắng thành 5 ô liên tục và hiển thị các ô thắng
+#### 3. Thắng: Đổi luật thắng thành 5 ô liên tục và hiển thị các ô thắng
    <img src="./report/win.png">
-4. Hiển thị button sắp xếp cắc bước
+#### s4. Hiển thị button sort và sắp xếp cắc bước
    <img src="./report/sort.png">
-5. Hòa
+#### 5. Hòa
    <img src="./report/adraw.png">
