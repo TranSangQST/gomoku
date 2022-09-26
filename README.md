@@ -4,6 +4,10 @@
 
 #### Họ tên: Trần Ngọc Sang
 
+### Email: transang0347@gmail.com
+
+### github: https://github.com/TranSangQST/gomoku
+
 #### Tự đánh giá: 10/10
 
 ## Hướng dẫn chạy project:

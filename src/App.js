@@ -6,7 +6,7 @@ function App() {
 	return (
 		<GlobalStyles>
 			<div className="App">
-				<Game size={10} winSize={5}></Game>
+				<Game size={7} winSize={5}></Game>
 			</div>
 		</GlobalStyles>
 	);
