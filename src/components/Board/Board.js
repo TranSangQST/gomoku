@@ -3,12 +3,15 @@ import Square from "../Square";
 
 import "./Board.css";
 
-function Board({squares, onClick}) {
+function Board({squares, winnerPositions, onClick}) {
 
 
+	if(winnerPositions) {
+		console.log("winnerPositions in board: ", winnerPositions);
+	}
 	
 
-	console.log("squares: ", squares);
+	// console.log("squares: ", squares);
 
 	const handleClick = (i) => {
 		return () => onClick(i);
@@ -17,19 +20,25 @@ function Board({squares, onClick}) {
 
 	const render = () => {
 		let size = Math.sqrt(squares.length);
-		console.log("size=", size);
+		// console.log("size=", size);
 		let elements = [];
 		for (let i = 0; i < size; i++) {
-			console.group(i);
+			// console.group(i);
 			let row = [];
 			for (let k = 0; k < size; k++) {
-				console.log("k=", k);
+				// console.log("k=", k);
 				let idx = i*size+k;
-				console.log("idx=", idx);
-				row.push(<Square value={squares[idx]} onClick={handleClick(idx)}/>);
+				// console.log("idx=", idx);
+
+				let isWinSquare;
+				if(winnerPositions) {
+					isWinSquare = winnerPositions.includes(idx);
+				}
+
+				row.push(<Square key={k} value={squares[idx]} isWinSquare={isWinSquare} onClick={handleClick(idx)}/>);
 			}
-			elements.push(<div className="board-row">{row}</div>);
-			console.groupEnd();
+			elements.push(<div key={i} className="board-row">{row}</div>);
+			// console.groupEnd();
 		}
 		return elements;
 	}

@@ -3,10 +3,10 @@ import "./Square.css"
 
 
 
-function Square({value, onClick}) {
+function Square({value, isWinSquare, onClick}) {
     // console.log("onclick in sq: ", onClick);
     return (
-        <button className="square" onClick={onClick}>
+        <button className={isWinSquare ? "square square-winner" : "square"} onClick={onClick}>
             {value}
         </button>
     );
