@@ -255,20 +255,20 @@ function Game({ winSize }) {
 						{isStart ? " Change Size " : " Play "}
 					</span>
 				</div>
-				<div className="game-area">
-					<div className="game-board">
-						<Board
-							squares={current.squares}
-							rowSize={rowSize}
-							colSize={colSize}
-							winnerPositions={winnerPositions}
-							curPos={current.curPos}
-							onClick={(row, col) => {
-								handleSquareClick(row, col);
-							}}
-						/>
-					</div>
-					{isStart && (
+				{isStart && (
+					<div className="game-area">
+						<div className="game-board">
+							<Board
+								squares={current.squares}
+								rowSize={rowSize}
+								colSize={colSize}
+								winnerPositions={winnerPositions}
+								curPos={current.curPos}
+								onClick={(row, col) => {
+									handleSquareClick(row, col);
+								}}
+							/>
+						</div>
 						<div className="game-info">
 							<div>
 								<button className={"btn"} onClick={handleSort}>
@@ -289,8 +289,8 @@ function Game({ winSize }) {
 							<div className="status">{status}</div>
 							<ol>{isAscending ? moves : moves.reverse()}</ol>
 						</div>
-					)}
-				</div>
+					</div>
+				)}
 			</div>
 		);
 	};
