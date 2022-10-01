@@ -8,14 +8,20 @@
 	justify-content: left;
 }
 
+.game-setting-size {
+	margin-right: 20px;
+}
 .game-setting-start-btn {
-	margin-left: 20px;
 	background-color: aqua;
 	width: 60px;
 }
 
 .game-guide {
 	margin: 20px 0;
+}
+
+.game-guide-highlight {
+	color: red;
 }
 .game-area {
 	display: flex;

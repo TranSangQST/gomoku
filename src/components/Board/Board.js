@@ -2,46 +2,61 @@ import Square from "../Square";
 
 import "./Board.css";
 
-function Board({ squares, winnerPositions, curPos, onClick }) {
-	const handleClick = (i) => {
-		return () => onClick(i);
+function Board({
+	squares,
+	rowSize,
+	colSize,
+	winnerPositions,
+	curPos,
+	onClick,
+}) {
+	// console.group("Re-render Board");
+	// console.group("squares", squares);
+	// console.log("rowSize = ", rowSize);
+	// console.log("colSize = ", colSize);
+
+	// console.groupEnd();
+
+	const handleClick = (i, k) => {
+		return () => onClick(i, k);
 	};
 
 	const render = () => {
-		console.log("square in board: ", squares);
-		let size = Math.sqrt(squares.length);
-		console.log("size in board: ", size);
+		// console.group("render Board");
 		let elements = [];
-		for (let i = 0; i < size; i++) {
-			let row = [];
-			for (let k = 0; k < size; k++) {
-				let idx = i * size + k;
-
+		for (let row = 0; row < rowSize; row++) {
+			let rowEles = [];
+			for (let col = 0; col < colSize; col++) {
 				let isWinSquare;
-				if (winnerPositions) {
-					isWinSquare = winnerPositions.includes(idx);
-				}
+				// if (winnerPositions) {
+				// 	isWinSquare = winnerPositions.includes(idx);
+				// }
 
-				row.push(
+				// console.log("curPos: ", curPos);
+				// console.log("row = ", row);
+				// console.log("col = ", col);
+
+				rowEles.push(
 					<Square
-						isCurPos={curPos === idx}
-						key={k}
-						value={squares[idx]}
+						isCurPos={curPos.row === row && curPos.col === col}
+						key={col}
+						value={squares[row][col]}
 						isWinSquare={isWinSquare}
-						onClick={handleClick(idx)}
+						onClick={handleClick(row, col)}
 					/>
 				);
 			}
 			elements.push(
-				<div key={i} className="board-row">
-					{row}
+				<div key={row} className="board-row">
+					{rowEles}
 				</div>
 			);
 		}
+		// console.groupEnd();
 		return elements;
 	};
 
-	return <div>{render()}</div>;
+	return <>{render()}</>;
 }
 
 export default Board;

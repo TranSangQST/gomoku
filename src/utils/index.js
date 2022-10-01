@@ -1,30 +1,29 @@
-function conver1DTo2DPosition(pos, size) {
-	if (pos !== 0 && !pos) {
-		return { row: isNaN, col: isNaN };
-	}
+// function conver1DTo2DPosition(pos, rowSize, colSize) {
+// 	if (pos !== 0 && !pos) {
+// 		return { row: isNaN, col: isNaN };
+// 	}
 
-	const row = Math.floor(pos / size);
-	const col = pos % size;
+// 	const row = Math.floor(pos / rowSize);
+// 	const col = pos % rowSize;
 
-	return { row, col };
-}
+// 	return { row, col };
+// }
 
-function conver2DTo1DPosition({ row, col }, size) {
-	return row * size + col;
-}
+// function conver2DTo1DPosition({ row, col }, size) {
+// 	return row * size + col;
+// }
 
 // https://stackoverflow.com/questions/22464605/convert-a-1d-array-to-2d-array
-function convert1DTo2DArray(arr) {
-	const size = Math.sqrt(arr.length);
-	const arr1D = [...arr];
-	const arr2D = [];
-	while (arr1D.length) arr2D.push(arr1D.splice(0, size));
-	return arr2D;
-}
+// function convert1DTo2DArray(arr) {
+// 	const size = Math.sqrt(arr.length);
+// 	const arr1D = [...arr];
+// 	const arr2D = [];
+// 	while (arr1D.length) arr2D.push(arr1D.splice(0, size));
+// 	return arr2D;
+// }
 
-function checkWinRow(squares2D, winSize, row, col) {
+function checkWinRow(squares, rowSize, colSize, row, col, winSize) {
 	const positions = [{ row, col }];
-	let size = squares2D.length;
 
 	let count = 1;
 
@@ -33,7 +32,7 @@ function checkWinRow(squares2D, winSize, row, col) {
 	while (curCol > 0) {
 		let leftCol = curCol - 1;
 
-		if (squares2D[row][col] === squares2D[row][leftCol]) {
+		if (squares[row][col] === squares[row][leftCol]) {
 			positions.push({ row: row, col: leftCol });
 			count++;
 		} else break;
@@ -42,10 +41,10 @@ function checkWinRow(squares2D, winSize, row, col) {
 
 	// Row: Right
 	curCol = col;
-	while (curCol < size - 1) {
+	while (curCol < colSize - 1) {
 		let rightCol = curCol + 1;
 
-		if (squares2D[row][col] === squares2D[row][rightCol]) {
+		if (squares[row][col] === squares[row][rightCol]) {
 			positions.push({ row: row, col: rightCol });
 			count++;
 		} else break;
@@ -58,9 +57,9 @@ function checkWinRow(squares2D, winSize, row, col) {
 	return false;
 }
 
-function checkWinCol(squares2D, winSize, row, col) {
+function checkWinCol(squares2D, rowSize, colSize, row, col, winSize) {
 	const positions = [{ row, col }];
-	let size = squares2D.length;
+	// let size = squares2D.length;
 
 	let count = 1;
 
@@ -79,7 +78,7 @@ function checkWinCol(squares2D, winSize, row, col) {
 
 	// Row: Down
 	curRow = row;
-	while (curRow < size - 1) {
+	while (curRow < rowSize - 1) {
 		let downRow = curRow + 1;
 
 		if (squares2D[row][col] === squares2D[downRow][col]) {
@@ -95,20 +94,45 @@ function checkWinCol(squares2D, winSize, row, col) {
 	return false;
 }
 
-function checkWinTopLeftToBottomRightCross(squares2D, winSize, row, col) {
+function checkWinTopLeftToBottomRightCross(
+	squares,
+	rowSize,
+	colSize,
+	row,
+	col,
+	winSize
+) {
 	const positions = [{ row, col }];
-	let size = squares2D.length;
+	// let size = squares2D.length;
 	let count = 1;
 
 	//  TopLeft
 	let curRow = row;
 	let curCol = col;
 
+	console.group("checkWinTopLeftToBottomRightCross");
+
+	console.log("squares: ", squares);
+	console.log("rowSize: ", rowSize);
+	console.log("colSize: ", colSize);
+	console.log("row: ", row);
+	console.log("col: ", col);
+	console.log("winSize: ", winSize);
+
+	console.log("curRow: ", curRow);
+	console.log("curCol: ", curCol);
+
+	console.group("TOP LEFT");
+
+	console.log(`cur: (${curRow} ${curCol}) = ${squares[curRow][curCol]}`);
+
 	while (curRow > 0 && curCol > 0) {
 		let upRow = curRow - 1;
 		let leftCol = curCol - 1;
 
-		if (squares2D[row][col] === squares2D[upRow][leftCol]) {
+		console.log(`Xet: (${upRow} ${leftCol}) = ${squares[upRow][leftCol]}`);
+
+		if (squares[row][col] === squares[upRow][leftCol]) {
 			positions.push({ row: upRow, col: leftCol });
 			count++;
 		} else break;
@@ -117,15 +141,24 @@ function checkWinTopLeftToBottomRightCross(squares2D, winSize, row, col) {
 		curCol = leftCol;
 	}
 
+	console.groupEnd();
 	// Bottom Right
 	curRow = row;
 	curCol = col;
 
-	while (curRow < size - 1 && curCol < size - 1) {
+	console.group("RIGHT BOTTOM");
+
+	console.log(`cur: (${curRow} ${curCol}) = ${squares[curRow][curCol]}`);
+
+	while (curRow < rowSize - 1 && curCol < colSize - 1) {
 		let downRow = curRow + 1;
 		let rightCol = curCol + 1;
 
-		if (squares2D[row][col] === squares2D[downRow][rightCol]) {
+		console.log(
+			`Xet: (${downRow} ${rightCol}) = ${squares[downRow][rightCol]}`
+		);
+
+		if (squares[row][col] === squares[downRow][rightCol]) {
 			positions.push({ row: downRow, col: rightCol });
 			count++;
 		} else break;
@@ -134,21 +167,32 @@ function checkWinTopLeftToBottomRightCross(squares2D, winSize, row, col) {
 		curCol = rightCol;
 	}
 
+	console.log("count=", count);
+	console.groupEnd();
+
+	console.groupEnd();
 	if (count === winSize) return positions;
 
 	return false;
 }
 
-function checkWinTopRightToBottomLeftCross(squares2D, winSize, row, col) {
+function checkWinTopRightToBottomLeftCross(
+	squares2D,
+	rowSize,
+	colSize,
+	row,
+	col,
+	winSize
+) {
 	const positions = [{ row, col }];
-	let size = squares2D.length;
+	// let size = squares2D.length;
 	let count = 1;
 
 	// Top Right
 	let curRow = row;
 	let curCol = col;
 
-	while (curRow > 0 && curCol < size - 1) {
+	while (curRow > 0 && curCol < colSize - 1) {
 		let upRow = curRow - 1;
 		let rightCol = curCol + 1;
 
@@ -164,7 +208,7 @@ function checkWinTopRightToBottomLeftCross(squares2D, winSize, row, col) {
 	// Bottom Left
 	curRow = row;
 	curCol = col;
-	while (curRow < size - 1 && curCol > 0) {
+	while (curRow < rowSize - 1 && curCol > 0) {
 		let downRow = curRow + 1;
 		let leftCol = curCol - 1;
 
@@ -182,40 +226,53 @@ function checkWinTopRightToBottomLeftCross(squares2D, winSize, row, col) {
 	return false;
 }
 
-function calculateWinner(squares1D, curPos, winSize) {
-	const size = Math.sqrt(squares1D.length);
-	let squares2D = convert1DTo2DArray(squares1D);
-	const { row, col } = conver1DTo2DPosition(curPos, size);
+function calculateWinner(squares, rowSize, colSize, row, col, winSize) {
+	console.group("calculateWinner start");
 
-	if (isNaN(row) || isNaN(col)) {
+	if (row === null || col === null) {
 		return false;
 	}
 
-	const positions2D =
-		checkWinRow(squares2D, winSize, row, col) ||
-		checkWinCol(squares2D, winSize, row, col) ||
-		checkWinTopLeftToBottomRightCross(squares2D, winSize, row, col) ||
-		checkWinTopRightToBottomLeftCross(squares2D, winSize, row, col);
+	console.groupEnd();
+	const positions =
+		checkWinRow(squares, rowSize, colSize, row, col, winSize) ||
+		checkWinCol(squares, rowSize, colSize, row, col, winSize) ||
+		checkWinTopLeftToBottomRightCross(
+			squares,
+			rowSize,
+			colSize,
+			row,
+			col,
+			winSize
+		) ||
+		checkWinTopRightToBottomLeftCross(
+			squares,
+			rowSize,
+			colSize,
+			row,
+			col,
+			winSize
+		);
 
-	if (positions2D) {
-		const positions = positions2D.map(function (pos) {
-			return conver2DTo1DPosition(pos, size);
-		});
-		const winner = squares1D[positions[0]];
+	console.group("calculateWinner start");
 
+	console.log("positions: ", positions);
+
+	if (positions) {
+		const winner = squares[positions[0].row][positions[0].col];
+
+		console.log("winner: ", winner);
+
+		console.groupEnd();
 		return {
 			positions,
 			winner,
 		};
 	}
 
+	console.groupEnd();
 	return false;
 }
 
-export {
-	conver1DTo2DPosition,
-	conver2DTo1DPosition,
-	convert1DTo2DArray,
-	calculateWinner,
-};
+export { calculateWinner };
 export default calculateWinner;
