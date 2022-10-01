@@ -1,32 +1,52 @@
 .game {
-    display: flex;
-    flex-direction: row;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.game-setting {
+	display: flex;
+	justify-content: left;
+}
+
+.game-setting-start-btn {
+	margin-left: 20px;
+	background-color: aqua;
+	width: 60px;
+}
+
+.game-guide {
+	margin: 20px 0;
+}
+.game-area {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
 }
 
 .game-info {
-    margin-left: 20px;
+	margin-left: 20px;
 }
 
 .status {
-    margin-bottom: 10px;
+	margin-bottom: 10px;
+	color: red;
 }
 
-
 .bold {
-    font-weight: 700;
+	font-weight: 700;
 }
 
 .btn {
-    display: flex;
-    align-items: center;
+	display: flex;
+	align-items: center;
 }
 
 .btn .icon-up {
-    margin-top: 5px;
-    margin-left: 5px;
+	margin-top: 5px;
+	margin-left: 5px;
 }
 
 .btn .icon-down {
-    margin-bottom: 5px;
-    margin-left: 5px;
+	margin-bottom: 5px;
+	margin-left: 5px;
 }

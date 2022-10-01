@@ -8,7 +8,9 @@ function Board({ squares, winnerPositions, curPos, onClick }) {
 	};
 
 	const render = () => {
+		console.log("square in board: ", squares);
 		let size = Math.sqrt(squares.length);
+		console.log("size in board: ", size);
 		let elements = [];
 		for (let i = 0; i < size; i++) {
 			let row = [];
