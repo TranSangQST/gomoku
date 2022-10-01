@@ -1,15 +1,22 @@
+import "./Square.css";
 
-import "./Square.css"
+function Square({ value, isWinSquare, isCurPos, onClick }) {
+	// console.log("onclick in sq: ", onClick);
 
+	const render = () => {
+		let className1 = isWinSquare ? "square-winner" : "";
+		let className2 = isCurPos ? "square-current" : "";
 
+		let className = `square ${className1} ${className2}`;
 
-function Square({value, isWinSquare, onClick}) {
-    // console.log("onclick in sq: ", onClick);
-    return (
-        <button className={isWinSquare ? "square square-winner" : "square"} onClick={onClick}>
-            {value}
-        </button>
-    );
+		return (
+			<button className={className} onClick={onClick}>
+				{value}
+			</button>
+		);
+	};
+
+	return render();
 }
 
 export default Square;
