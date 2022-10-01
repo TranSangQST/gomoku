@@ -2,18 +2,26 @@ import Square from "../Square";
 
 import "./Board.css";
 
-function Board({ squares, winnerPositions, curPos, onClick }) {
+function Board({
+	squares,
+	rowSize,
+	colSize,
+	winnerPositions,
+	curPos,
+	onClick,
+}) {
 	const handleClick = (i) => {
 		return () => onClick(i);
 	};
 
 	const render = () => {
-		let size = Math.sqrt(squares.length);
+		// let size = Math.sqrt(squares.length);
+
 		let elements = [];
-		for (let i = 0; i < size; i++) {
+		for (let i = 0; i < rowSize; i++) {
 			let row = [];
-			for (let k = 0; k < size; k++) {
-				let idx = i * size + k;
+			for (let k = 0; k < colSize; k++) {
+				let idx = i * colSize + k;
 
 				let isWinSquare;
 				if (winnerPositions) {
