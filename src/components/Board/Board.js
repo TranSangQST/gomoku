@@ -13,9 +13,6 @@ function Board({
 	const handleClick = (i, k) => {
 		return () => onClick(i, k);
 	};
-
-	console.log("winner positions in board: ", winnerPositions);
-	console.log("squares=", squares);
 	const render = () => {
 		let elements = [];
 		for (let row = 0; row < rowSize; row++) {
@@ -24,13 +21,11 @@ function Board({
 				let isWinSquare;
 
 				if (winnerPositions) {
-					isWinSquare = winnerPositions.some((pos, idx) => {
+					isWinSquare = winnerPositions.some((pos) => {
 						return pos.row === row && pos.col === col;
 					});
 				}
 
-				console.log("row=", row);
-				console.log("col=", col);
 				rowEles.push(
 					<Square
 						isCurPos={curPos.row === row && curPos.col === col}

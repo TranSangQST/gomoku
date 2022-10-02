@@ -1,27 +1,3 @@
-// function conver1DTo2DPosition(pos, rowSize, colSize) {
-// 	if (pos !== 0 && !pos) {
-// 		return { row: isNaN, col: isNaN };
-// 	}
-
-// 	const row = Math.floor(pos / rowSize);
-// 	const col = pos % rowSize;
-
-// 	return { row, col };
-// }
-
-// function conver2DTo1DPosition({ row, col }, size) {
-// 	return row * size + col;
-// }
-
-// https://stackoverflow.com/questions/22464605/convert-a-1d-array-to-2d-array
-// function convert1DTo2DArray(arr) {
-// 	const size = Math.sqrt(arr.length);
-// 	const arr1D = [...arr];
-// 	const arr2D = [];
-// 	while (arr1D.length) arr2D.push(arr1D.splice(0, size));
-// 	return arr2D;
-// }
-
 function checkWinRow(squares, rowSize, colSize, row, col, winSize) {
 	const positions = [{ row, col }];
 
@@ -59,7 +35,6 @@ function checkWinRow(squares, rowSize, colSize, row, col, winSize) {
 
 function checkWinCol(squares2D, rowSize, colSize, row, col, winSize) {
 	const positions = [{ row, col }];
-	// let size = squares2D.length;
 
 	let count = 1;
 
@@ -103,7 +78,7 @@ function checkWinTopLeftToBottomRightCross(
 	winSize
 ) {
 	const positions = [{ row, col }];
-	// let size = squares2D.length;
+
 	let count = 1;
 
 	//  TopLeft
@@ -185,7 +160,7 @@ function checkWinTopRightToBottomLeftCross(
 	winSize
 ) {
 	const positions = [{ row, col }];
-	// let size = squares2D.length;
+
 	let count = 1;
 
 	// Top Right

@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faL, faSortAsc, faSortDesc } from "@fortawesome/free-solid-svg-icons";
+import { faSortAsc, faSortDesc } from "@fortawesome/free-solid-svg-icons";
 
 import Board from "../Board";
 
@@ -35,24 +35,11 @@ function Game({ winSize }) {
 			return;
 		}
 
-		// console.group("handleSquareClick");
-
-		// console.log(`Click at: ${row} ${col}`);
-
 		const currentHistory = history.slice(0, stepNumber + 1);
 		const current = currentHistory[currentHistory.length - 1];
 		const squares = current.squares.slice();
 
-		// console.log("History: ", history);
-		// console.log("currentHistory: ", currentHistory);
-		// console.log("current: ", current);
-		// console.log("squares: ", squares);
-		// console.log("squares[0]: ", squares[0]);
-		// console.log("squares[0][0]: ", squares[0][0]);
-
 		const countEmpty = current.countEmpty;
-		// console.log("old curPos: ", curPos);
-		// console.log("old countEmpty: ", countEmpty);
 
 		if (
 			calculateWinner(
@@ -90,8 +77,6 @@ function Game({ winSize }) {
 		);
 		setStepNumber(history.length);
 		setXIsNext((xIsNext) => !xIsNext);
-
-		// console.groupEnd();
 	};
 
 	const jumpTo = (step) => {
@@ -114,7 +99,6 @@ function Game({ winSize }) {
 	};
 
 	const handleStartGame = () => {
-		// console.group(`handle Start/Setting Game`);
 		if (isStart) {
 			setHistory([
 				{
@@ -146,24 +130,13 @@ function Game({ winSize }) {
 			]);
 		}
 
-		// console.groupEnd();
-
 		setXIsNext(defaultXisNext);
 		setStepNumber(0);
 		setIsStart(!isStart);
 	};
 
 	const render = () => {
-		console.group("Render GAME");
-		console.log("history: ", history);
 		const current = history[stepNumber];
-
-		console.log("current: ", current);
-		console.log("current.squares: ", current.squares);
-		console.log("rowSize: ", rowSize);
-		console.log("colSize: ", colSize);
-		console.log("current.curPos.row: ", current.curPos.row);
-		console.log("current.curPos.col: ", current.curPos.col);
 
 		const checkWinner = calculateWinner(
 			current.squares,
@@ -209,7 +182,6 @@ function Game({ winSize }) {
 			}
 		}
 
-		console.groupEnd();
 		return (
 			<div className="game">
 				<div className="game-setting">
